@@ -1,12 +1,17 @@
+package com.one.app;
+
+import com.one.modelo.ConsultaConversion;
+import com.one.modelo.MonedaConvertida;
+
 import java.util.Scanner;
 
 public class ConversorApp {
     public static void main(String[] args) {
         int opcion;
         float valor;
-        String key = "747ea034b2c12ee2f0c7aa38";
+        ConsultaConversion consulta = new ConsultaConversion();
+        MonedaConvertida monedaConvertida;
         Scanner teclado = new Scanner(System.in);
-        Http
 
         do {
             System.out.println("****************************************************");
@@ -26,22 +31,28 @@ public class ConversorApp {
                 valor = teclado.nextFloat();
                 switch (opcion){
                     case 1:
-                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+"[ARS]");
+                        monedaConvertida = consulta.buscarMonedaConversion("USD","ARS",valor);
+                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[ARS]");
                         break;
                     case 2:
-                        System.out.println("El valor "+valor+"[ARS] corresponde al valor final de =>> "+"[USD]");
+                        monedaConvertida = consulta.buscarMonedaConversion("ARS","USD",valor);
+                        System.out.println("El valor "+valor+"[ARS] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[USD]");
                         break;
                     case 3:
-                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+"[BRL]");
+                        monedaConvertida = consulta.buscarMonedaConversion("USD","BRL",valor);
+                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[BRL]");
                         break;
                     case 4:
-                        System.out.println("El valor "+valor+"[BRL] corresponde al valor final de =>> "+"[ARS]");
+                        monedaConvertida = consulta.buscarMonedaConversion("BRL","USD",valor);
+                        System.out.println("El valor "+valor+"[BRL] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[USD]");
                         break;
                     case 5:
-                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+"[COP]");
+                        monedaConvertida = consulta.buscarMonedaConversion("USD","COP",valor);
+                        System.out.println("El valor "+valor+"[USD] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[COP]");
                         break;
                     case 6:
-                        System.out.println("El valor "+valor+"[COP] corresponde al valor final de =>> "+"[USD]");
+                        monedaConvertida = consulta.buscarMonedaConversion("COP","USD",valor);
+                        System.out.println("El valor "+valor+"[COP] corresponde al valor final de =>> "+monedaConvertida.conversion_result()+"[USD]");
                         break;
                 }
             }
